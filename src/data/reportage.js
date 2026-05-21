@@ -1,7 +1,7 @@
 export const reportageData = [
   {
     title: "Lieu",
-    text: "IUT Paul Sabatier / environnement étudiant."
+    text: "IUT Paul Sabatier / environnement étudiant / plage."
   },
   {
     title: "Format",
@@ -9,7 +9,7 @@ export const reportageData = [
   },
   {
     title: "Participants",
-    text: "Deux étudiantes interrogées sur leurs usages TV et streaming."
+    text: "4 étudiants, 1 professeur."
   },
   {
     title: "Sondage",
