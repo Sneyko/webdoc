@@ -25,3 +25,7 @@ Thumbs.db
 # Backup and old files
 site à jour.html
 SIGNAL PERDU - Télévision et streaming _ vos habitudes.csv
+
+# Large Media Files (ignored for GitHub size limits)
+public/assets/interview.mp4
+

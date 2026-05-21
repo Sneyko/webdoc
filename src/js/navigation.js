@@ -119,6 +119,13 @@ export function showChannel(num, animate = true) {
         $$("#ch03 .chart-container-horizontal").forEach((chart) => chart.classList.remove("revealed"));
     }
 
+    if (num !== 5) {
+        const video = $("#fieldVideo");
+        if (video && !video.paused) {
+            video.pause();
+        }
+    }
+
     $$(".remote-nav button[data-channel]").forEach((button) => {
         const active = Number(button.dataset.channel) === num;
         button.classList.toggle("active", active);

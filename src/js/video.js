@@ -24,10 +24,10 @@ export function initVideoFallback() {
         source.addEventListener("error", showFallback);
     });
 
-    // Security check: if not loaded in 700ms, show placeholder
+    // Security check: if not loaded in 4000ms, show placeholder
     window.setTimeout(() => { 
         if (video.readyState < 2) {
             showFallback();
         } 
-    }, 700);
+    }, 4000);
 }
