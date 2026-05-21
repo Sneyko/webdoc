@@ -1,5 +1,14 @@
 export const testimonialsData = [
-    { status: "Témoignage à intégrer après interview", person: "Prénom, âge, statut, lieu", quote: "Citation issue du micro-trottoir : à remplacer uniquement après accord de la personne interrogée.", context: "Profil jeune public / usage mobile" },
-    { status: "Témoignage à intégrer après interview", person: "Prénom, âge, statut, lieu", quote: "Citation issue du micro-trottoir : préciser si la personne regarde encore le direct, le replay ou une plateforme.", context: "Profil familial / télévision du foyer" },
-    { status: "Interview semi-directive à intégrer", person: "Prénom, âge, statut, lieu", quote: "Citation issue d’une interview : à relier à une question claire sur l’avenir de la télévision.", context: "Profil enseignant, journaliste, technicien, créateur ou usager expert" }
+  {
+    title: "La télévision devient occasionnelle",
+    text: "Les réponses de terrain montrent que la télévision traditionnelle n’est plus forcément un réflexe quotidien. Elle reste présente, mais souvent de manière ponctuelle ou liée à certaines situations."
+  },
+  {
+    title: "Le streaming domine par la liberté",
+    text: "Les plateformes sont associées à la possibilité de choisir le moment, le contenu et l’écran. Cette liberté revient comme l’un des principaux avantages face à la télévision linéaire."
+  },
+  {
+    title: "Les usages deviennent personnels",
+    text: "La consommation vidéo se déplace vers des pratiques plus individuelles : smartphone, ordinateur, plateformes à la demande et contenus adaptés au rythme de chacun."
+  }
 ];

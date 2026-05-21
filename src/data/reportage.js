@@ -1,9 +1,42 @@
 export const reportageData = [
-    { title: "Lieu", text: "IUT Paul Sabatier / entourage étudiant / diffusion numérique." },
-    { title: "Sondage", text: "80 réponses réelles." },
-    { title: "Profil dominant", text: "Public jeune, majoritairement 19-25 ans et étudiant." },
-    { title: "Méthode", text: "Questionnaire Google Forms + micro-trottoir vidéo." },
-    { title: "Limite", text: "Échantillon non représentatif de toute la population française." },
-    { title: "Objectif", text: "Croiser les données du sondage avec les témoignages filmés et les sources documentaires." },
-    { title: "Checklist terrain", checklist: ["Autorisation orale ou écrite obtenue", "Son vérifié", "Plan stable", "Citation sélectionnée", "Source de confiance"] }
+  {
+    title: "Lieu",
+    text: "IUT Paul Sabatier / environnement étudiant."
+  },
+  {
+    title: "Format",
+    text: "Interview vidéo courte, intégrée au webdocumentaire."
+  },
+  {
+    title: "Participants",
+    text: "Deux étudiantes interrogées sur leurs usages TV et streaming."
+  },
+  {
+    title: "Sondage",
+    text: "80 réponses réelles collectées via Google Forms.",
+    badge: "80 RÉPONSES"
+  },
+  {
+    title: "Méthode",
+    text: "Croisement entre données du sondage, interview de terrain et sources documentaires."
+  },
+  {
+    title: "Limite",
+    text: "Échantillon majoritairement jeune et étudiant, non représentatif de toute la population française."
+  },
+  {
+    title: "Objectif",
+    text: "Comprendre comment les jeunes arbitrent entre télévision traditionnelle, streaming et écrans personnels."
+  },
+  {
+    title: "Méthode et fiabilité",
+    checklist: [
+      "Questionnaire Google Forms exploité",
+      "80 réponses réelles analysées",
+      "Interview vidéo tournée",
+      "Vidéo hébergée via Vercel Blob",
+      "Résultats présentés comme exploratoires",
+      "Limites de l’échantillon précisées"
+    ]
+  }
 ];

@@ -187,10 +187,27 @@ export function renderPlatforms() {
 export function renderReportage() {
     const el = $("#reportageCards");
     if (!el) return;
-    el.innerHTML = reportageData.map((item) => item.checklist
-        ? `<article class="report-card"><h3>${escapeHtml(item.title)}</h3><ul class="checklist">${item.checklist.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul></article>`
-        : `<article class="report-card"><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p></article>`
-    ).join("");
+    el.innerHTML = reportageData.map((item) => {
+        const badgeHtml = item.badge ? `<span class="card-badge">${escapeHtml(item.badge)}</span>` : "";
+        if (item.checklist) {
+            return `
+                <article class="report-card">
+                    ${badgeHtml}
+                    <h3>${escapeHtml(item.title)}</h3>
+                    <ul class="checklist">
+                        ${item.checklist.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}
+                    </ul>
+                </article>
+            `;
+        }
+        return `
+            <article class="report-card">
+                ${badgeHtml}
+                <h3>${escapeHtml(item.title)}</h3>
+                <p>${escapeHtml(item.text)}</p>
+            </article>
+        `;
+    }).join("");
 }
 
 export function renderTestimonials() {
@@ -198,10 +215,8 @@ export function renderTestimonials() {
     if (!el) return;
     el.innerHTML = testimonialsData.map((item) => `
         <article class="testimonial-item">
-            <div class="testimonial-name">${escapeHtml(item.status)}</div>
-            <div class="testimonial-role">${escapeHtml(item.person)}</div>
-            <p class="testimonial-text">${escapeHtml(item.quote)}</p>
-            <p class="source-note">${escapeHtml(item.context)}</p>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p class="testimonial-text">${escapeHtml(item.text)}</p>
         </article>
     `).join("");
 }
