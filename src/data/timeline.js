@@ -1,0 +1,11 @@
+export const timelineData = [
+    { year: "1949", title: "Naissance de la RTF", description: "La télévision française devient un service régulier. Elle reste rare, coûteuse et surtout urbaine, mais pose les bases d’un média national.", sourceIds: [], image: "rtf-1949.webp" },
+    { year: "1964", title: "Création de l’ORTF", description: "Radio et télévision sont réunies dans un grand organisme public. La télévision s’installe progressivement comme média central du foyer.", sourceIds: [], image: "ortf-1964.webp" },
+    { year: "1967", title: "La couleur arrive", description: "Le passage à la couleur transforme l’expérience du téléspectateur et accélère la place de la télévision dans la culture populaire.", sourceIds: [], image: "couleur-1967.webp" },
+    { year: "1974", title: "Fin de l’ORTF", description: "L’éclatement de l’ORTF fait apparaître plusieurs organismes et prépare un paysage audiovisuel plus concurrentiel.", sourceIds: [], image: "fin-ortf-1974.webp" },
+    { year: "1984", title: "Canal+ et la TV payante", description: "La télévision n’est plus seulement gratuite et généraliste : les modèles d’abonnement prennent place dans les usages.", sourceIds: [], image: "canal-1984.webp" },
+    { year: "1987", title: "Privatisation de TF1", description: "La logique commerciale s’affirme. Audience, publicité et concurrence deviennent des moteurs majeurs du secteur.", sourceIds: [], image: "prive-tf1-1987.webp" },
+    { year: "2005", title: "Déploiement de la TNT", description: "L’offre gratuite s’élargit fortement. Le public dispose de plus de chaînes, mais l’audience se disperse.", sourceIds: ["arcom-tendances-2025"], image: "tnt-2005.webp" },
+    { year: "2014", title: "Netflix arrive en France", description: "La vidéo à la demande par abonnement installe un nouveau réflexe : choisir un programme hors grille horaire.", sourceIds: ["cnc-video-2024"], image: "netflix-2014.webp" },
+    { year: "2024", title: "Les chaînes deviennent plateformes", description: "TF1+, France.tv et M6+ renforcent l’accès numérique aux contenus TV : direct, replay, catalogues et recommandations.", sourceIds: ["tf1plus-lancement", "francetv-offre-numerique", "m6plus-lancement"], image: "2024-plateforme.webp" }
+];

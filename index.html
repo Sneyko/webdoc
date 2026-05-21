@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SIGNAL PERDU, webdocumentaire étudiant sur la transformation de la télévision à l’ère du streaming.">
+    <title>SIGNAL PERDU - Webdocumentaire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#ch01">Aller au contenu</a>
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+    <canvas id="zap-canvas" aria-hidden="true"></canvas>
+    <div class="zap-flash" id="zapFlash" aria-hidden="true"></div>
+
+    <div class="channel-indicator" id="channelIndicator" aria-live="polite">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="channelLabel">CH 01</span>
+    </div>
+
+    <button class="sources-top-btn" type="button" data-open-sources aria-label="Ouvrir les sources du webdocumentaire">SOURCES</button>
+
+    <nav class="remote-nav" id="remoteNav" aria-label="Navigation par canaux">
+        <button class="ch-btn" type="button" id="chMinus" aria-label="Canal précédent">CH−</button>
+        <span class="separator" aria-hidden="true"></span>
+        <button class="active" type="button" data-channel="1" aria-label="Canal 01, accueil">01</button>
+        <button type="button" data-channel="2" aria-label="Canal 02, histoire de la télévision">02</button>
+        <button type="button" data-channel="3" aria-label="Canal 03, usages et sondage">03</button>
+        <button type="button" data-channel="4" aria-label="Canal 04, plateformes TV">04</button>
+        <button type="button" data-channel="5" aria-label="Canal 05, terrain et conclusion">05</button>
+        <span class="separator" aria-hidden="true"></span>
+        <button class="ch-btn" type="button" id="chPlus" aria-label="Canal suivant">CH+</button>
+        <button class="ch-btn" type="button" data-open-sources aria-label="Ouvrir les sources">SOURCES</button>
+    </nav>
+
+    <div id="intro" role="dialog" aria-labelledby="introTitle" aria-describedby="introSubtitle">
+        <canvas id="staticCanvas" aria-hidden="true"></canvas>
+        <div class="crt-mask" id="crtMask" aria-hidden="true"></div>
+        <div class="intro-content">
+            <h1 class="intro-title" id="introTitle">SIGNAL PERDU</h1>
+            <p class="intro-subtitle" id="introSubtitle">La télévision peut-elle survivre à l’ère du streaming ?</p>
+            <div class="intro-actions">
+                <button class="intro-btn" id="introBtn" type="button">ENTRER</button>
+                <button class="intro-skip" id="introSkipBtn" type="button">PASSER L’INTRO</button>
+            </div>
+        </div>
+    </div>
+
+    <main id="mainContent">
+        <section class="channel active" id="ch01" aria-labelledby="ch01-title">
+            <div class="home-wrap">
+                <h1 class="ch01-title reveal" id="ch01-title">SIGNAL PERDU</h1>
+                <p class="ch01-question reveal">La télévision perd-elle son signal, ou change-t-elle simplement de fréquence ?</p>
+                <p class="ch01-intro-text reveal">Longtemps, la télévision a fixé les horaires, les conversations et les grands rendez-vous collectifs. Le streaming a déplacé le pouvoir vers l’utilisateur : regarder quand on veut, où l’on veut, sur l’écran que l’on choisit. Ce webdocumentaire suit cette bascule sans annoncer trop vite la disparition de la télévision. L’angle est plus précis : la TV ne meurt pas, elle se transforme sous la pression des plateformes, des usages mobiles et des nouvelles attentes du public.</p>
+                <p class="main-idea reveal"><strong>Idée principale :</strong> le direct, l’information, l’événement et les publics fidèles maintiennent la télévision en vie, tandis que le streaming fragmente les habitudes.</p>
+                <div class="ch01-channels" id="homeCards" aria-label="Choix des canaux"></div>
+            </div>
+        </section>
+
+        <section class="channel" id="ch02" aria-labelledby="ch02-title" aria-hidden="true">
+            <div class="content-wrap">
+                <div class="section-header">
+                    <div class="section-tag reveal">CANAL 02</div>
+                    <h2 class="section-title reveal" id="ch02-title">LA TÉLÉ, C’EST QUOI ?</h2>
+                    <p class="section-desc reveal">Avant d’être concurrencée par les plateformes, la télévision a été un média de masse, un objet technique, un rendez-vous familial et un outil politique. Son histoire explique pourquoi elle résiste encore.</p>
+                </div>
+                <p class="main-idea reveal"><strong>Idée principale :</strong> la télévision française s’est déjà réinventée plusieurs fois : couleur, chaînes privées, TNT, replay, plateformes.</p>
+                <div class="timeline-container reveal" aria-label="Frise chronologique de la télévision française">
+                    <div class="timeline-track" id="timelineTrack"></div>
+                </div>
+                <p class="transition-note reveal">La télévision n’a donc jamais été figée. Le streaming n’est pas sa première rupture, mais il est la première à remettre en cause son principe central : le programme imposé à heure fixe.</p>
+            </div>
+        </section>
+
+        <section class="channel" id="ch03" aria-labelledby="ch03-title" aria-hidden="true">
+            <div class="content-wrap">
+                <div class="section-header">
+                    <div class="section-tag reveal">CANAL 03</div>
+                    <h2 class="section-title reveal" id="ch03-title">USAGES SOUS TENSION</h2>
+                    <p class="section-desc reveal">La crise de la télévision ne se résume pas à une baisse d’audience : elle révèle un changement de réflexe. Les jeunes publics regardent encore des vidéos, mais ils les consomment davantage à la demande, sur ordinateur ou smartphone, avec des plateformes qui remplacent peu à peu la grille horaire traditionnelle.</p>
+                </div>
+                <p class="main-idea reveal"><strong>Idée principale :</strong> notre sondage montre que la télévision n’a pas totalement disparu des usages, mais qu’elle devient secondaire face au streaming, à la liberté de choix et aux écrans personnels.</p>
+                
+                <h3 class="section-subtitle reveal">Chiffres clés du sondage</h3>
+                <div class="stats-row" id="statsCards"></div>
+
+                <div class="survey-section reveal" id="surveySection">
+                    <h3 class="section-subtitle">A. Résultats de notre sondage</h3>
+                    <div class="survey-intro">
+                        <p>Pour compléter nos recherches documentaires et notre micro-trottoir, nous avons réalisé un sondage exploratoire auprès de 80 répondants. La majorité des réponses provient d’un public jeune, principalement étudiant. Ces résultats ne prétendent donc pas représenter toute la population française, mais ils permettent d’observer des tendances d’usage autour de la télévision, du streaming et des écrans utilisés au quotidien.</p>
+                        <a class="primary-link" id="surveyLink" href="https://forms.gle/yWokKNiJgzBMK22H6" target="_blank" rel="noopener">Participer au sondage</a>
+                    </div>
+                    <div id="surveyResults"></div>
+                </div>
+
+                <div class="national-section reveal" id="nationalSection">
+                    <h3 class="section-subtitle">B. Repères nationaux : le streaming progresse, la télévision résiste</h3>
+                    <div class="stats-row" id="nationalStatsCards"></div>
+                </div>
+
+                <div class="quotes-section reveal">
+                    <h3 class="section-subtitle">Ce que disent les répondants</h3>
+                    <div class="quotes-grid" id="quoteCards"></div>
+                </div>
+                <p class="transition-note reveal">Le sondage et le terrain doivent compléter les sources institutionnelles : les usages réels donnent du relief aux données nationales.</p>
+            </div>
+        </section>
+
+        <section class="channel" id="ch04" aria-labelledby="ch04-title" aria-hidden="true">
+            <div class="content-wrap">
+                <div class="section-header">
+                    <div class="section-tag reveal">CANAL 04</div>
+                    <h2 class="section-title reveal" id="ch04-title">LA RÉINVENTION</h2>
+                    <p class="section-desc reveal">Les chaînes ne répondent pas au streaming en restant seulement des chaînes. Elles deviennent aussi des plateformes : direct, replay, recommandations, comptes utilisateurs et catalogues prolongés.</p>
+                </div>
+                <p class="main-idea reveal"><strong>Idée principale :</strong> TF1+, France.tv et M6+ brouillent la frontière entre télévision et streaming. La télévision cherche à conserver son identité tout en adoptant les codes des plateformes.</p>
+                <div class="platform-grid reveal" id="platformCards"></div>
+                <p class="transition-note reveal">La riposte française ne consiste donc pas à remplacer la télévision par Internet, mais à rendre la télévision disponible dans les usages numériques.</p>
+            </div>
+        </section>
+
+        <section class="channel" id="ch05" aria-labelledby="ch05-title" aria-hidden="true">
+            <div class="content-wrap">
+                <div class="section-header">
+                    <div class="section-tag reveal">CANAL 05</div>
+                    <h2 class="section-title reveal" id="ch05-title">TERRAIN, VOIX, CONCLUSION</h2>
+                    <p class="section-desc reveal">La dernière partie doit apporter la preuve documentaire : micro-trottoir, interview, transcription, méthode de tournage et conclusion nuancée.</p>
+                </div>
+                <p class="main-idea reveal"><strong>Idée principale :</strong> le reportage terrain vérifie si la transformation observée dans les sources existe aussi dans les pratiques quotidiennes.</p>
+                <div class="video-section reveal">
+                    <div>
+                        <div class="video-shell">
+                            <video id="fieldVideo" controls preload="metadata" poster="assets/poster-micro-trottoir.jpg" aria-label="Vidéo du micro-trottoir">
+                                <source src="assets/micro-trottoir.mp4" type="video/mp4">
+                                Vidéo micro-trottoir à intégrer.
+                            </video>
+                            <div class="video-fallback" id="videoFallback">Vidéo micro-trottoir à intégrer : ajoutez assets/micro-trottoir.mp4 et assets/poster-micro-trottoir.jpg.</div>
+                        </div>
+                        <p class="source-note">Média attendu : assets/micro-trottoir.mp4. Poster attendu : assets/poster-micro-trottoir.jpg.</p>
+                    </div>
+                    <aside class="video-copy">
+                        <h3>Texte de lancement vidéo</h3>
+                        <p>À compléter avec une voix off courte : présentation du lieu, du nombre de personnes interrogées et de la question posée.</p>
+                        <div class="transcript">
+                            <div class="transcript-title">Transcription courte</div>
+                            <p>À intégrer après montage : deux ou trois phrases clés, fidèles à la vidéo, avec accord des personnes citées.</p>
+                        </div>
+                    </aside>
+                </div>
+                <div class="reportage-section reveal">
+                    <h3 class="section-subtitle">Reportage terrain</h3>
+                    <p class="lead" style="margin-bottom: 24px;">Notre enquête repose sur deux formes de terrain : un questionnaire Google Forms de 80 réponses et un micro-trottoir vidéo. Le questionnaire permet d’obtenir des tendances chiffrées, tandis que les interviews donnent une dimension plus humaine aux résultats. L’échantillon reste majoritairement jeune et étudiant : il ne représente pas toute la population française, mais il correspond à une génération particulièrement concernée par le passage de la télévision au streaming.</p>
+                    <div class="report-grid" id="reportageCards"></div>
+                </div>
+                <div class="quotes-section reveal">
+                    <h3 class="section-subtitle">Témoignages éditables</h3>
+                    <div class="testimonials-list" id="testimonialCards"></div>
+                </div>
+                <div class="final-section reveal">
+                    <p class="final-quote">Le signal n’est pas perdu, il change de fréquence.</p>
+                    <p>Les résultats de notre sondage confirment que le streaming domine largement les usages des répondants : 97,5 % utilisent des plateformes de vidéo à la demande, et 95 % préfèrent regarder du contenu quand ils le souhaitent. Pourtant, la télévision n’a pas totalement disparu : plus d’un répondant sur deux déclare encore la regarder au moins occasionnellement, souvent pour le sport, les événements en direct, les émissions ou lorsqu’elle est déjà allumée dans le foyer.</p>
+                    <p>La télévision perd son monopole, mais elle conserve des forces : le direct, l’événement, l’information, le sport et certains publics qui gardent l’habitude du rendez-vous. Le streaming impose la liberté de choix, mais il fragmente les usages et rend l’attention plus difficile à rassembler.</p>
+                    <p>La frontière devient de plus en plus floue : TF1+, France.tv et M6+ montrent que la télévision ne disparaît pas seulement derrière les plateformes. Elle apprend à devenir plateforme elle-même.</p>
+                </div>
+                <div class="credits-section reveal">
+                    <h3 class="section-subtitle">Crédits</h3>
+                    <div class="credits-grid" id="creditsCards"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="sources-dialog" id="sourcesDialog" aria-labelledby="sourcesTitle">
+        <div class="sources-header">
+            <h2 id="sourcesTitle">Sources</h2>
+            <button class="dialog-close" type="button" id="closeSources" aria-label="Fermer les sources">×</button>
+        </div>
+        <div class="sources-body">
+            <p class="edit-note">Chaque chiffre affiché dans le webdocumentaire doit pointer vers une source. Les liens ci-dessous sont des bases de travail ; la date de consultation et les pages exactes doivent être vérifiées avant dépôt.</p>
+            <div class="sources-grid" id="sourcesGrid"></div>
+        </div>
+    </dialog>
+
+    <noscript><p style="padding:24px;color:#E8E8E8;background:#0A0A0A;">Ce webdocumentaire nécessite JavaScript pour la navigation par canaux.</p></noscript>
+</body>
+</html>

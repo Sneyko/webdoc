@@ -1,0 +1,112 @@
+/* BASE CSS */
+:root {
+    --black: #0A0A0A;
+    --red: #E63946;
+    --red-glow: rgba(230, 57, 70, 0.6);
+    --red-glow-weak: rgba(230, 57, 70, 0.25);
+    --text: #E8E8E8;
+    --muted: #9A9A9A;
+    --quiet: #666;
+    --card: #111;
+    --line: #222;
+    --line-strong: #333;
+    --nav-space: 132px;
+    --max-content: 1180px;
+    --crt-phosphor: rgba(230, 57, 70, 0.1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--black);
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--black);
+    color: var(--text);
+    font-family: "Inter", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+body.has-custom-cursor, 
+body.has-custom-cursor button, 
+body.has-custom-cursor a {
+    cursor: none;
+}
+
+button, a {
+    font: inherit;
+}
+
+button {
+    border: 0;
+}
+
+a {
+    color: var(--text);
+}
+
+p, li, h1, h2, h3 {
+    overflow-wrap: anywhere;
+}
+
+video, canvas {
+    max-width: 100%;
+}
+
+::selection {
+    background: var(--red);
+    color: #fff;
+}
+
+:focus-visible {
+    outline: 3px solid var(--red);
+    outline-offset: 4px;
+}
+
+/* Accessibility link */
+.skip-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 30000;
+    transform: translateY(-150%);
+    background: var(--red);
+    color: #fff;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 0 15px var(--red-glow);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* Custom Webdoc scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0D0D0D;
+    border-left: 1px solid var(--line);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #252525;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--red);
+    box-shadow: 0 0 8px var(--red-glow);
+}
