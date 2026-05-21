@@ -772,9 +772,15 @@ main {
 /* CANAL 05 (TERRAIN, VOIX, CONCLUSION) */
 .video-section {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-    gap: 24px;
-    align-items: start;
+    grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr); /* Portrait video on the left, copy on the right */
+    gap: clamp(24px, 4vw, 44px);
+    align-items: center; /* Center-align vertically to balance the tall portrait video */
+}
+
+.video-section > div:first-child {
+    max-width: 320px; /* Constrain both video and its source-note width */
+    width: 100%;
+    margin: 0 auto;  /* Center in mobile/grid cell */
 }
 
 .video-shell {
@@ -787,7 +793,7 @@ main {
 .video-shell video {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 9 / 16; /* Portrait aspect ratio */
     background: #000;
 }
 
