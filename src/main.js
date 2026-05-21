@@ -10,7 +10,8 @@ import {
     initSourcesDialog, 
     bindEvents, 
     updateProgressBar, 
-    playIntroSequence 
+    playIntroSequence,
+    initThemeToggle
 } from './js/navigation.js';
 
 function init() {
@@ -25,6 +26,9 @@ function init() {
 
     // 4. Initialize sources dialog listeners
     initSourcesDialog();
+
+    // 4b. Initialize theme toggle listener
+    initThemeToggle();
 
     // 5. Initialize video fallback events
     initVideoFallback();

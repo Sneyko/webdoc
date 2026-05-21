@@ -44,6 +44,13 @@
         padding: 6px 10px;
         font-size: 0.92rem;
     }
+    .theme-toggle-btn {
+        top: 12px;
+        left: 104px;
+        min-height: 34px;
+        padding: 6px 10px;
+        font-size: 0.92rem;
+    }
     .remote-nav {
         bottom: calc(10px + env(safe-area-inset-bottom));
         justify-content: flex-start;
@@ -62,7 +69,7 @@
     .intro-actions, .survey-intro {
         grid-template-columns: 1fr;
     }
-    .intro-btn, .intro-skip, .primary-link, .text-link {
+    .intro-btn, .primary-link, .text-link {
         width: 100%;
     }
     .ch01-channels, .stats-row, .survey-grid, .quotes-grid, .platform-grid, .testimonials-list, .credits-grid, .report-grid, .sources-grid {

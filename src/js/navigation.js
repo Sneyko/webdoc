@@ -38,7 +38,7 @@ export function buildIntroTitle() {
 export function playIntroSequence() {
     const titleEl = $("#introTitle");
     const subtitle = $("#introSubtitle");
-    const introButtons = $$(".intro-btn, .intro-skip");
+    const introButtons = $$(".intro-btn");
     if (!titleEl || !subtitle) return;
     
     const letters = buildIntroTitle();
@@ -328,12 +328,10 @@ export function initSourcesDialog() {
 
 export function bindEvents() {
     const introBtn = $("#introBtn");
-    const introSkipBtn = $("#introSkipBtn");
     const chPlus = $("#chPlus");
     const chMinus = $("#chMinus");
 
     if (introBtn) introBtn.addEventListener("click", enterSite);
-    if (introSkipBtn) introSkipBtn.addEventListener("click", enterSite);
     if (chPlus) chPlus.addEventListener("click", () => switchChannel(currentChannel < totalChannels ? currentChannel + 1 : 1));
     if (chMinus) chMinus.addEventListener("click", () => switchChannel(currentChannel > 1 ? currentChannel - 1 : totalChannels));
 
@@ -362,6 +360,29 @@ export function bindEvents() {
             switchChannel(currentChannel > 1 ? currentChannel - 1 : totalChannels);
         } else if (/^[1-5]$/.test(event.key)) {
             switchChannel(Number(event.key));
+        }
+    });
+}
+
+export function initThemeToggle() {
+    const btn = $("#themeToggleBtn");
+    if (!btn) return;
+
+    // Check saved preference
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        document.body.classList.add("light-theme");
+        btn.textContent = "MODE SOMBRE";
+    }
+
+    btn.addEventListener("click", () => {
+        const isLight = document.body.classList.toggle("light-theme");
+        if (isLight) {
+            localStorage.setItem("theme", "light");
+            btn.textContent = "MODE SOMBRE";
+        } else {
+            localStorage.setItem("theme", "dark");
+            btn.textContent = "MODE CLAIR";
         }
     });
 }
