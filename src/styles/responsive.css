@@ -83,6 +83,13 @@
     .survey-metrics-grid {
         grid-template-columns: 1fr;
     }
+    
+    .student-badge-stamp {
+        width: 46px;
+        height: 46px;
+        bottom: calc(76px + env(safe-area-inset-bottom));
+        right: 16px;
+    }
 }
 
 @media (hover: none), (pointer: coarse) {
