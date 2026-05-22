@@ -15,19 +15,17 @@ export function initVideoFallback() {
         fallback.style.display = "grid";
     };
 
+    // Initialize as hidden
+    hideFallback();
+
     video.addEventListener("loadeddata", hideFallback);
     video.addEventListener("canplay", hideFallback);
+    video.addEventListener("play", hideFallback);
+    video.addEventListener("playing", hideFallback);
     video.addEventListener("error", showFallback);
 
     const sources = video.querySelectorAll("source");
     sources.forEach((source) => {
         source.addEventListener("error", showFallback);
     });
-
-    // Security check: if not loaded in 4000ms, show placeholder
-    window.setTimeout(() => { 
-        if (video.readyState < 2) {
-            showFallback();
-        } 
-    }, 4000);
 }
