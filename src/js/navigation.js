@@ -368,9 +368,12 @@ export function initThemeToggle() {
     const btn = $("#themeToggleBtn");
     if (!btn) return;
 
-    // Check saved preference
+    // Check saved preference (default is light)
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
+    if (savedTheme === "dark") {
+        document.body.classList.remove("light-theme");
+        btn.textContent = "MODE CLAIR";
+    } else {
         document.body.classList.add("light-theme");
         btn.textContent = "MODE SOMBRE";
     }
